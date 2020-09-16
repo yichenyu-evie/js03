@@ -103,11 +103,11 @@
     min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
 }
 
-.slide {
+.sliding-e {
   -webkit-animation-name: slide;
-  -webkit-animation-duration:0.5s;
+  -webkit-animation-duration:0.1s;
   animation-name: slide;
-  animation-duration: 0.5s;
+  animation-duration: 0.1s;
   transition: 10s;
   position: relative;
 }
