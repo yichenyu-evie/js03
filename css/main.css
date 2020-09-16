@@ -112,12 +112,12 @@
   position: relative;
 }
 
-@-webkit-keyframes slide {
+@-webkit-keyframes sliding-e {
   from {left: 0;}
   to {left: 1000px;}
 }
 
-@keyframes slide {
+@keyframes sliding-e {
   from {left: 0;}
   to {left: 1000px;}
 }
