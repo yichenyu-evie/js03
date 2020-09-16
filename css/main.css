@@ -102,3 +102,22 @@
     text-align: center;
     min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
 }
+
+.slide {
+  -webkit-animation-name: slide;
+  -webkit-animation-duration:0.5s;
+  animation-name: slide;
+  animation-duration: 0.5s;
+  transition: 10s;
+  position: relative;
+}
+
+@-webkit-keyframes slide {
+  from {left: 0;}
+  to {left: 1000px;}
+}
+
+@keyframes slide {
+  from {left: 0;}
+  to {left: 1000px;}
+}

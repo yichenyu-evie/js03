@@ -1,76 +1,54 @@
-
 var slideIndex = 1;
+var dotHTML = ""
 
 function plusSlides(n) {
-    console.log("inside plusSlides with a value of " + n);
-   // fadeOutEffect();
-    showSlides(slideIndex += n);
-    //fadeOut();
+  //console.log("inside plusSlides with a value of " + n);
+  showSlides(slideIndex += n);
 }
 
-
-
-function currentSlide(n){
-    console.log(n);
-    //showSlides(slideIndex = n);
+function currentSlide(n) {
+  //console.log(n);
+  showSlides(slideIndex = n);
 }
 
-function moveDot(){
-    var imgs = document.getElementsByClassName("carousel-item");
-    
-    var docContianer = document.getElementById("dotanddot");
-    htmlDots = '<div style="text-align:center">';
-    for (i = 0; i < imgs.length; i++){
-    htmlDots += `<span class="dot" onclick="currentSlide(${i+1})" ></span>`
-   }
-    htmlDots += '</div>'
-    docContianer.innerHTML = htmlDots;
-    console.log(htmlDots);
-      
-}
+//built the dots
+dotHTML += 
+ "<div class='dot' onclick='currentSlide(1)'></div>"+
+ "<div class='dot'onclick='currentSlide(2)'></div>"+
+ "<div class='dot' onclick='currentSlide(3)'></div>";
 
-function jump(n) {
-    
-}
+//show the slide and dots
+function showSlides(n) {
+ var slides = document.getElementsByClassName("my-slides");
+ var dots = document.getElementsByClassName("dot");
  
-moveDot();
+ //if the current slide's index is less than 0, move back to the last index (in-loop)
+ if (n < 1) {
+    //console.log("inside the if ");
+    slideIndex = slides.length;
+  }
+ 
+ //if the current slide's index is greater than 4, move back to the first index (in-loop)
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
 
-function showSlides(n){
-     console.log("inside showSlides with a value of " + n);
-    
-    var slides = document.getElementsByClassName("my-slides");
-
-    //var dots = document.getElementsByClassName("dot");
-    console.log(slides);
-    
-
-    //resets it end node
-    if (n < 1) {
-        slideIndex = slides.length;
-    }
-    
-    if (n > slides.length) {
-        slideIndex = 1;
-    }
-    
-    //hides the slides
-    for (i = 0; i < slides.length; i++){
-        slides[i].style.display = "none";
-        
-    }
-    
-    //for dot
-    
-
-//    for (i = 0; i < slides.length; i++){
-//        
-//       // dots[i].className = dots[i].className.replace(" active", "");
-//    }
-//   
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
+ //hide the slideshow
+ for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+ }
+ 
+ //change dot active for each slide
+ for (i = 0; i < dots.length; i++) {
+  dots[i].className = dots[i].className.replace(" active", "");
+ }
+ 
+ //first page load
+ slides[slideIndex-1].style.display = "block";
+ dots[slideIndex-1].className += " active";
 }
 
+document.getElementById("dotCon").innerHTML = dotHTML; //show dots
+showSlides(slideIndex); //show slider
 
-
-showSlides(slideIndex);
+//Credits: https://stackoverflow.com/questions/16270761/how-to-insert-a-large-block-of-html-in-javascript/16270807
